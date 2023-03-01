@@ -1,1 +1,2 @@
-
+First Experiment: BR-LSVRG; 4 attacks (BF, LF, IPM, ALIE); 4 datasets (a9a, phishing, w8a, mushrooms); 2 batchsizes (1, 1%); gamma = 1/12L
+Second Experiment: Byrd-SAGA, Byz-VR-MARINA, BR-LSVRG; 4 attacks (BF, LF, IPM, ALIE); 4 datasets (a9a, phishing, w8a, mushrooms); batchsize = 1%; gamma = 5/2L
