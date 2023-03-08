@@ -192,7 +192,7 @@ def byrd_saga(filename, x_init, A, y, gamma, num_of_byz, num_of_workers, attack,
     indices_size = len(indices)
     if x_star is None:
         x_star = np.zeros(n)
-    ref_point = np.array(x_star) #если знаем решение, то ref_point поможет вычислять расстояние до него
+    ref_point = np.array(x_star) 
     x = np.array(x_init)
     
     points_table = np.tile(copy.deepcopy(x), ((m * num_of_workers), 1))
@@ -204,7 +204,7 @@ def byrd_saga(filename, x_init, A, y, gamma, num_of_byz, num_of_workers, attack,
         indices_arr = np.vstack((indices_arr, randint.rvs(low=0, high=m, size=num_of_indices)))
     indices_counter = 0
     
-    #эти массивы мы будем сохранять в файл
+    
     its = np.array([0])
     tim = np.array([0.0])
     data_passes = np.array([0.0])
@@ -222,7 +222,7 @@ def byrd_saga(filename, x_init, A, y, gamma, num_of_byz, num_of_workers, attack,
     
     indices_counter = 0
     
-    #метод
+   
     shape1 = (num_of_workers, len(grad_sum))
     G_w = np.zeros(shape1)
     shape2 = (m, len(x))
@@ -332,7 +332,7 @@ def byrd_saga(filename, x_init, A, y, gamma, num_of_byz, num_of_workers, attack,
         func_val = np.append(func_val, F(x, [A, y, l2, sparse_full, l1])-f_star)
         sq_distances = np.append(sq_distances, norm(x - ref_point) ** 2)
     
-    #сохранение результатов в файл
+    
     res = {'last_iter':x, 'func_vals':func_val, 'iters':its, 'time':tim, 'data_passes':data_passes,
            'squared_distances':sq_distances}
     

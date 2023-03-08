@@ -12,29 +12,6 @@ import math
 from itertools import permutations
 from scipy.spatial.distance import cdist, euclidean
 
-def randk(x, args):
-    k = args[0]
-    n = len(x)
-    indices = np.random.choice(np.arange(n), replace=False, size=(n - k))
-    x[indices] = 0
-    return x, 64 * k
-
-def quantization(x, args):
-    n = len(x)
-    ord_norm = args[0]
-    weight_sum = norm(x, ord=ord_norm)
-    xis = bernoulli.rvs(np.true_divide(np.abs(x), weight_sum))
-    res = weight_sum * np.sign(x) * xis
-    return res, 64 + 2*np.count_nonzero(xis)
-
-def identical(x, args):
-    n = len(x)
-    return x, 64*n
-
-def topk(x, args):
-    k = args[0]
-    k_order_statistics = np.sort(np.abs(x))[-k]
-    return np.where(np.abs(x) >= k_order_statistics, x, 0), 64*k
 
 def logreg_loss(x, args):
     A = args[0]
